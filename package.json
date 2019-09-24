@@ -1,0 +1,25 @@
+{
+  "name": "choose-your-own-adventure-creator",
+  "version": "1.0.0",
+  "description": "human",
+  "scripts": {
+    "build": "tsc",
+    "watchtsc": "tsc -w",
+    "watchsass": "sass --watch style/style.scss style/style.css",
+    "watch": "npm-run-all watchtsc watchsass",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "start": "electron ./dist/main.js"
+  },
+  "keywords": [
+    "poopie"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "@types/node": "^10.12.11",
+    "electron": "4.0.0-beta.8",
+    "sass": "^1.15.2",
+    "tslint": "^5.10.0",
+    "typescript": "^3.3.0-dev.20181201"
+  }
+}

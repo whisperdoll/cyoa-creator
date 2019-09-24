@@ -1,0 +1,228 @@
+*
+{
+    outline: none;
+    font-family: Helvetica, sans-serif;
+}
+
+input, textarea
+{
+    border: 1px solid #aaa;
+    padding: 2px;
+}
+
+html, body, #container, .player
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.console
+{
+    background-color: #111;
+    color: #eee;
+    font-size: 16px;
+    padding: 8px;
+    box-sizing: border-box;
+    cursor: default;
+
+    & *
+    {
+        font-family: monospace;
+    }
+
+    .cursor
+    {
+        user-select: none;
+    }
+}
+
+.dialog-backdrop
+{
+    cursor: default;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    padding: 0;
+    margin: 0;
+
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1000;
+
+    .dialog
+    {
+        background-color: #eee;
+        padding: 24px;
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.optionDialog .dialog
+{
+    display: flex;
+    flex-direction: column;
+
+    & > *
+    {
+        margin: 4px 0;
+    }
+
+    .code
+    {
+        width: 500px;
+        height: 150px;
+    }
+
+    .buttons
+    {
+        display: flex;
+        justify-content: flex-end;
+
+        & > *
+        {
+            margin: 0 2px;
+        }
+    }
+}
+
+.nodeCanvas
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    cursor: move;
+    background-image: url("../img/bg.png");
+    overflow: hidden;
+
+    .buttonContainer
+    {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        box-sizing: border-box;
+        z-index: 1;
+        background: #aaa;
+        padding: 8px 16px 8px 16px;
+
+        & > *
+        {
+            margin-right: 16px;
+            font-size: 16px;
+            cursor: pointer;
+
+            &.defaultLabel
+            {
+                cursor: default;
+                margin-right: 4px;
+            }
+        }
+    }
+}
+
+.node
+{
+    $dragBarHeight: 32px;
+    $bottomBarHeight: 24px;
+
+    border: 1px solid #aaa;
+    height: 300px;
+    width: 500px;
+    position: absolute;
+    cursor: default;
+    resize: both;
+    overflow: hidden;
+    background-color: #222;
+    color: #eee;
+
+    .dragBar
+    {
+        height: $dragBarHeight;
+        width: 100%;
+        cursor: move;
+        display: flex;
+        align-items: center;
+        padding-left: 8px;
+        box-sizing: border-box;
+        user-select: none;
+
+        .name
+        {
+            &.editing
+            {
+                background-color: white;
+                color: #111;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                padding: 0 8px;
+            }
+        }
+    }
+
+    .text
+    {
+        cursor: text;
+        padding: 8px;
+        box-sizing: border-box;
+        color: white;
+        font-family: monospace;
+        font-size: 14px;
+        height: calc(100% - #{$bottomBarHeight} - #{$dragBarHeight});
+        background-color: black;
+        border: 1px solid #aaa;
+        border-right: 0;
+        border-left: 0;
+        resize: none;
+        width: 100%;
+        display: block;
+    }
+
+    .options
+    {
+        width: calc(100% - #{$bottomBarHeight});
+        min-height: $bottomBarHeight;
+        height: $bottomBarHeight;
+
+        .option
+        {
+            border: 0;
+            border-right: 1px solid #aaa;
+            height: 100%;
+            padding: 0 8px;
+            font-size: 12px;
+            font-family: monospace;
+            font-weight: bold;
+            display: inline-block;
+            cursor: pointer;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            line-height: $bottomBarHeight;
+
+            &:hover
+            {
+                background-color: rgba(212, 66, 66, 0.2);
+            }
+
+            &.add
+            {
+                float: right;
+                font-weight: normal;
+            }
+        }
+    }
+}
